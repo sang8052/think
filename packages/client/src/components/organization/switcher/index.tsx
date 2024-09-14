@@ -101,7 +101,7 @@ export const UserOrganizationsSwitcher = () => {
                           <Avatar size="extra-small">
                             <IconAppCenter />
                           </Avatar>
-                          新建组织
+                          新建团队空间
                         </Space>
                       </Text>
                     </a>

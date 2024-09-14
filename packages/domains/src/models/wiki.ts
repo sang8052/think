@@ -18,6 +18,7 @@ export interface IWiki {
   organizationId: IOrganization['id'];
   name: string;
   avatar: string;
+  type: string;
   description: string;
   createUserId: IUser['id'];
   createUser: IUser;

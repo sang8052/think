@@ -22,6 +22,7 @@ export interface IDocument {
   createUser: IUser;
   parentDocumentId?: IDocument['id'];
   title: string;
+  type: string;
   content: string;
   state: Uint8Array;
   status: DocumentStatus;

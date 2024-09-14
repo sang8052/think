@@ -11,6 +11,7 @@ export class CreateWikiDto {
   readonly name: string;
 
   @IsString({ message: '知识库描述类型错误（正确类型为：String）' })
+  @IsOptional()
   description: string;
 
   @IsString({ message: '知识库头像类型错误（正确类型为：String）' })

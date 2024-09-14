@@ -36,7 +36,7 @@ const Page: NextPage<IProps> = ({ organizationId }) => {
       <div className="container">
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Title heading={3} style={{ margin: '8px 0' }}>
-            组织设置
+            空间设置
           </Title>
         </div>
         <OrganizationSetting organizationId={organizationId} tab={tab} onNavigate={navigate} />

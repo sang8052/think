@@ -64,11 +64,6 @@ export const RouterHeader: React.FC = () => {
           }
           footer={
             <Space>
-              {user && (
-                <Button theme="solid" onClick={gotoApp}>
-                  前往组织空间
-                </Button>
-              )}
               <Theme />
               <User />
             </Space>
@@ -87,11 +82,6 @@ export const RouterHeader: React.FC = () => {
           items={menus}
           footer={
             <Space>
-              {user && (
-                <Button theme="solid" onClick={gotoApp}>
-                  前往组织空间
-                </Button>
-              )}
               {user && <Message />}
               <Theme />
               <User />

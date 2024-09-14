@@ -52,11 +52,11 @@ const Page: React.FC = () => {
 
   return (
     <SingleColumnLayout>
-      <Seo title="新建组织" />
+      <Seo title="新建团队空间" />
       <div className="container">
         <div>
           <Title heading={3} style={{ margin: '8px 0' }}>
-            新建组织
+            新建团队空间
           </Title>
         </div>
         <Form
@@ -91,8 +91,25 @@ const Page: React.FC = () => {
             label="名称"
             field="name"
             style={{ width: '100%' }}
-            placeholder="请输入组织名称"
-            rules={[{ required: true, message: '请输入组织名称' }]}
+            placeholder="请输入团队名称"
+            rules={[{ required: true, message: '请输入团队名称' }]}
+          />
+
+          <Form.Input
+            label="团队ID"
+            field="organizationId"
+            style={{ width: '100%' }}
+            placeholder="请输入个性化的团队ID,由4-20个数字或字母组成,创建后不可更改。"
+            rules={[
+              {
+                required: true,
+                message: '请输入团队ID',
+              },
+              {
+                message: '团队ID由4-20个数字或字母组成',
+                pattern: /^[0-9A-Za-z]{4,20}/,
+              },
+            ]}
           />
 
           <Form.TextArea

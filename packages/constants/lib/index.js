@@ -2,8 +2,11 @@
 exports.__esModule = true;
 exports.EMPTY_DOCUMNENT = exports.DOCUMENT_COVERS = exports.ORGANIZATION_LOGOS = exports.WIKI_AVATARS = exports.DEFAULT_WIKI_AVATAR = void 0;
 exports.DEFAULT_WIKI_AVATAR = 'https://wipi.oss-cn-shanghai.aliyuncs.com/2022-07-20/default7-97.png';
-exports.WIKI_AVATARS = [exports.DEFAULT_WIKI_AVATAR];
-exports.ORGANIZATION_LOGOS = [exports.DEFAULT_WIKI_AVATAR];
+exports.WIKI_AVATARS = [exports.DEFAULT_WIKI_AVATAR,];
+exports.ORGANIZATION_LOGOS = [
+    exports.DEFAULT_WIKI_AVATAR,
+
+];
 exports.DOCUMENT_COVERS = [
     'https://wipi.oss-cn-shanghai.aliyuncs.com/2022-07-20/photo-1562380156-9a99cd92484c.avif',
     'https://wipi.oss-cn-shanghai.aliyuncs.com/2022-07-20/photo-1510935813936-763eb6fbc613.avif',

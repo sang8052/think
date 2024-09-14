@@ -79,9 +79,10 @@ export class UserService {
 
       await this.organizationService.createOrganization(createdUser, {
         name: createdUser.name,
-        description: `${createdUser.name}的个人组织`,
+        description: `${createdUser.name}的个人空间(系统自动创建)`,
         logo: ORGANIZATION_LOGOS[0],
         isPersonal: true,
+        organizationId: 'user-' + createdUser.name,
       });
 
       console.log('[think] 已创建默认系统管理员，请尽快登录系统修改密码');
@@ -152,9 +153,10 @@ export class UserService {
 
     await this.organizationService.createOrganization(createdUser, {
       name: createdUser.name,
-      description: `${createdUser.name}的个人组织`,
+      description: `${createdUser.name}的个人空间(系统自动创建)`,
       logo: ORGANIZATION_LOGOS[0],
       isPersonal: true,
+      organizationId: 'user-' + createdUser.name,
     });
 
     return instanceToPlain(createdUser) as IUser;

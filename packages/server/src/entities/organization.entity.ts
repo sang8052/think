@@ -5,12 +5,13 @@ import { BeforeInsert, Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDa
 export class OrganizationEntity {
   @BeforeInsert()
   getShortId() {
-    this.id = getShortId();
+    if (!this.id) this.id = getShortId();
   }
 
   @PrimaryColumn()
   public id: string;
 
+  public organizationId: string;
   /**
    * 组织名称
    */

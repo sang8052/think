@@ -52,18 +52,28 @@ export class OrganizationService {
     if (count >= 5) {
       throw new HttpException('个人可创建组织上限为 5 个', HttpStatus.FORBIDDEN);
     }
-
     const data = {
       ...dto,
       createUserId: user.id,
     };
 
     if (await this.organizationRepo.findOne({ name: data.name })) {
-      throw new HttpException('该组织已存在', HttpStatus.BAD_REQUEST);
+      throw new HttpException(`该空间已存在,{name:${data.name}}`, HttpStatus.BAD_REQUEST);
     }
 
-    const organization = await this.organizationRepo.save(await this.organizationRepo.create(data));
+    if (await this.organizationRepo.findOne({ id: data.organizationId })) {
+      throw new HttpException(`该空间已存在,{organizationId:${data.organizationId}}`, HttpStatus.BAD_REQUEST);
+    }
+    const dataobj = await this.organizationRepo.create({
+      id: data.organizationId,
+      name: data.name,
+      description: data.description,
+      logo: data.logo,
+      createUserId: data.createUserId,
+    });
 
+    const organization = await this.organizationRepo.save(dataobj);
+    dataobj;
     await this.authService.createOrUpdateAuth(user.id, {
       auth: AuthEnum.creator,
       organizationId: organization.id,
@@ -89,7 +99,7 @@ export class OrganizationService {
     const oldData = await this.organizationRepo.findOne(organizationId);
 
     if (!oldData) {
-      throw new HttpException('目标组织不存在', HttpStatus.NOT_FOUND);
+      throw new HttpException('目标空间不存在', HttpStatus.NOT_FOUND);
     }
 
     return await this.organizationRepo.save(await this.organizationRepo.merge(oldData, dto));
@@ -103,6 +113,7 @@ export class OrganizationService {
    */
   async deleteOrganization(user: IUser, organizationId) {
     const organization = await this.organizationRepo.findOne(organizationId);
+    if (organization.isPersonal) throw new HttpException('不可以删除自己的空间!', HttpStatus.FORBIDDEN);
     await this.authService.canDelete(user.id, {
       organizationId: organization.id,
       wikiId: null,
@@ -121,6 +132,7 @@ export class OrganizationService {
    */
   public async getPersonalOrganization(user: IUser) {
     const organization = await this.organizationRepo.findOne({ createUserId: user.id, isPersonal: true });
+
     return organization;
   }
 

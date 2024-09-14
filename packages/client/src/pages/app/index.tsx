@@ -41,13 +41,13 @@ const Page = () => {
 
   return (
     <SingleColumnLayout>
-      <Seo title="组织列表" />
+      <Seo title="空间列表" />
       <div className="container">
         <div style={{ marginBottom: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Title heading={3} style={{ margin: '8px 0' }}>
-            组织列表
+            空间列表
           </Title>
-          <Button onClick={gotoCreate}>新建组织</Button>
+          <Button onClick={gotoCreate}>新建团队空间</Button>
         </div>
         <DataRender
           loading={userOrganizationsLoading}
