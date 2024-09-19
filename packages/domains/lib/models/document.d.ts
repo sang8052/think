@@ -8,6 +8,13 @@ export declare enum DocumentStatus {
     private = "private",
     public = "public"
 }
+
+export declare enum DocumentType {
+    doc = "doc",
+    file = "file",
+    path = "path"
+}
+
 /**
  * 文档数据定义
  */
@@ -19,7 +26,7 @@ export interface IDocument {
     createUserId: IUser['id'];
     createUser: IUser;
     parentDocumentId?: IDocument['id'];
-    title: string;
+    title: DocumentType;
     content: string;
     state: Uint8Array;
     status: DocumentStatus;

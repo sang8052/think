@@ -1,4 +1,4 @@
-import { DocumentStatus } from '@think/domains';
+import { DocumentStatus, DocumentType } from '@think/domains';
 
 import { getShortId } from '@helpers/shortid.herlper';
 import { Exclude } from 'class-transformer';
@@ -37,6 +37,9 @@ export class DocumentEntity {
 
   @Column({ type: 'longblob', comment: '文档内容' })
   public state: Uint8Array;
+
+  @Column({ type: 'enum', default: DocumentType.doc, comment: '文档的类型' })
+  public type: DocumentType;
 
   @Column({
     type: 'enum',
